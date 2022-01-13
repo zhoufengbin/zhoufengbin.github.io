@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Docker的使用 | 奋书人的博客</title>
+  <title>Java集合之List | 奋书人的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="奋书人的博客" />
   
-  <meta name="description" content="启动运行MySQL镜像1docker run -p 3306:3306 --name MySQL8.0 -e MYSQL_ROOT_PASSWORD&#x3D;041225 -d mysql:8.0">
+  <meta name="description" content="1、List集合1.1 List集合的排序 内部类方式—Comparator 123456789101112&#x2F;&#x2F; 升序排序Collections.sort(list, new Comparator&lt;test&gt;() &amp;#123;                @Override                public int compare(test o1, test o2) &amp;#1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker的使用">
-<meta property="og:url" content="https://zhoufengbin.github.io/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="Java集合之List">
+<meta property="og:url" content="https://zhoufengbin.github.io/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/index.html">
 <meta property="og:site_name" content="奋书人的博客">
-<meta property="og:description" content="启动运行MySQL镜像1docker run -p 3306:3306 --name MySQL8.0 -e MYSQL_ROOT_PASSWORD&#x3D;041225 -d mysql:8.0">
+<meta property="og:description" content="1、List集合1.1 List集合的排序 内部类方式—Comparator 123456789101112&#x2F;&#x2F; 升序排序Collections.sort(list, new Comparator&lt;test&gt;() &amp;#123;                @Override                public int compare(test o1, test o2) &amp;#1">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-12T08:13:23.000Z">
-<meta property="article:modified_time" content="2022-01-12T08:15:12.086Z">
+<meta property="article:published_time" content="2022-01-13T06:58:56.000Z">
+<meta property="article:modified_time" content="2022-01-13T07:28:28.316Z">
 <meta property="article:author" content="ZhouFengBin">
-<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="List">
 <meta name="twitter:card" content="summary">
   
   
@@ -114,20 +114,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-Docker的使用" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-Java集合之List" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      Docker的使用
+      Java集合之List
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2022-01-12
+          <i class="fa fa-calendar"></i>  2022-01-13
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -143,13 +143,19 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h4 id="启动运行MySQL镜像"><a href="#启动运行MySQL镜像" class="headerlink" title="启动运行MySQL镜像"></a>启动运行MySQL镜像</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --name MySQL8.0 -e MYSQL_ROOT_PASSWORD=041225 -d mysql:8.0</span><br></pre></td></tr></table></figure>
-
+            <h3 id="1、List集合"><a href="#1、List集合" class="headerlink" title="1、List集合"></a>1、List集合</h3><h4 id="1-1-List集合的排序"><a href="#1-1-List集合的排序" class="headerlink" title="1.1 List集合的排序"></a>1.1 List集合的排序</h4><ol>
+<li><p>内部类方式—Comparator</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 升序排序</span></span><br><span class="line">Collections.sort(list, <span class="keyword">new</span> Comparator&lt;test&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(test o1, test o2)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> o1.getCmonth().compareTo(o2.getCmonth());</span><br><span class="line">                &#125;</span><br><span class="line"> <span class="comment">// 降序排序</span></span><br><span class="line">Collections.sort(list, <span class="keyword">new</span> Comparator&lt;test&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(test o1, test o2)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> o1.getCmonth().compareTo(o2.getCmonth());</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>实现比较类—Comparable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Test</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> Integer age;</span><br><span class="line">    </span><br><span class="line"> 	<span class="comment">// 升序排序</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Test o)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.age.compareTo(o.getAge());</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 降序排序</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Test o)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.age.compareTo(o.getAge());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//需要排序的集合排序 List&lt;Test&gt;</span></span><br><span class="line">Collections.sort(list);</span><br></pre></td></tr></table></figure></li>
+<li><p>Stream流方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stream流方式-降序排序(逆序排序)</span></span><br><span class="line">list = list.stream().sorted(Comparator.comparing(test::getAge)</span><br><span class="line">    				.reversed())</span><br><span class="line">    				.collect(Collectors.toList());</span><br><span class="line"><span class="comment">//stream流方式-升序排序</span></span><br><span class="line">list =list.stream().sorted(Comparator.comparing(test::getAge))</span><br><span class="line">                   .collect(Collectors.toList());</span><br></pre></td></tr></table></figure></li>
+</ol>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2022年01月12日 16:15</p>
-        <p>原始链接： <a class="post-url" href="/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Docker的使用">https://zhoufengbin.github.io/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/</a></p>
+        <p>最后更新： 2022年01月13日 15:28</p>
+        <p>原始链接： <a class="post-url" href="/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/" title="Java集合之List">https://zhoufengbin.github.io/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/</a></p>
         <footer>
             <a href="https://zhoufengbin.github.io">
                 <img src="/images/logo.png" alt="ZhouFengBin">
@@ -198,7 +204,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufengbin.github.io/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/&title=《Docker的使用》 — 奋书人的博客&pic=https://zhoufengbin.github.ioimages/logo.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufengbin.github.io/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/&title=《Java集合之List》 — 奋书人的博客&pic=images/Java集合之List.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -208,22 +214,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufengbin.github.io/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/&title=《Docker的使用》 — 奋书人的博客&source=个人笔记使用" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufengbin.github.io/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/&title=《Java集合之List》 — 奋书人的博客&source=个人笔记使用" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufengbin.github.io/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufengbin.github.io/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Docker的使用》 — 奋书人的博客&url=https://zhoufengbin.github.io/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/&via=https://zhoufengbin.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java集合之List》 — 奋书人的博客&url=https://zhoufengbin.github.io/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/&via=https://zhoufengbin.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufengbin.github.io/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufengbin.github.io/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -233,7 +239,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhoufengbin.github.io/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhoufengbin.github.io/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -245,7 +251,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/Docker/" class="color2">Docker</a>
+    <a href="/tags/List/" class="color5">List</a>
       
   </li>
 
@@ -258,26 +264,16 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E8%BF%90%E8%A1%8CMySQL%E9%95%9C%E5%83%8F"><span class="post-toc-text">启动运行MySQL镜像</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1%E3%80%81List%E9%9B%86%E5%90%88"><span class="post-toc-text">1、List集合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-1-List%E9%9B%86%E5%90%88%E7%9A%84%E6%8E%92%E5%BA%8F"><span class="post-toc-text">1.1 List集合的排序</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          Java集合之List
-        
-      </span>
-    </a>
   
-  
-    <a href="/2022/01/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">数据库常用SQL操作</span>
+    <a href="/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Docker的使用</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
