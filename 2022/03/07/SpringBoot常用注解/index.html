@@ -3,19 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档: 2022/1 | 奋书人的博客</title>
+  <title>SpringBoot常用注解 | 奋书人的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="奋书人的博客" />
   
-  <meta name="description" content="个人笔记使用">
-<meta property="og:type" content="website">
-<meta property="og:title" content="奋书人的博客">
-<meta property="og:url" content="http://localhost:4000/archives/2022/01/index.html">
+  <meta name="description" content="时间格式化注解 @DateTimeFormat 和 @JsonFormat @DateTimeFormat：指定入参的时间格式，入参的格式不正确会报错。 12345@Datapublic class DateVo &amp;#123;    @DateTimeFormat(pattern&#x3D;&quot;yyyy-MM-dd HH:mm:ss&quot;)    private Date date;&amp;#125">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot常用注解">
+<meta property="og:url" content="http://localhost:4000/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/index.html">
 <meta property="og:site_name" content="奋书人的博客">
-<meta property="og:description" content="个人笔记使用">
+<meta property="og:description" content="时间格式化注解 @DateTimeFormat 和 @JsonFormat @DateTimeFormat：指定入参的时间格式，入参的格式不正确会报错。 12345@Datapublic class DateVo &amp;#123;    @DateTimeFormat(pattern&#x3D;&quot;yyyy-MM-dd HH:mm:ss&quot;)    private Date date;&amp;#125">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-07T08:09:17.000Z">
+<meta property="article:modified_time" content="2022-03-07T12:13:09.087Z">
 <meta property="article:author" content="ZhouFengBin">
+<meta property="article:tag" content="SpringBoot注解">
 <meta name="twitter:card" content="summary">
   
   
@@ -111,213 +114,172 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap">
-  
-  
+        <section id="main" class="body-wrap"><article id="post-SpringBoot常用注解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/01/14/MyBaits%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  <time datetime="2022-01-14T01:11:06.000Z" itemprop="datePublished">01-14</time>
-</a>
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/14/MyBaits%E7%9A%84%E4%BD%BF%E7%94%A8/"  target="_blank"  >MyBaits的使用</a>
+    <h1 class="post-title" itemprop="name">
+      SpringBoot常用注解
     </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2022-03-07
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
   
 
-    </header>
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
       
-        <div class="archive-post-footer">
+            
+            <h4 id="时间格式化注解-DateTimeFormat-和-JsonFormat"><a href="#时间格式化注解-DateTimeFormat-和-JsonFormat" class="headerlink" title="时间格式化注解 @DateTimeFormat 和 @JsonFormat"></a>时间格式化注解 @DateTimeFormat 和 @JsonFormat</h4><ul>
+<li><p><strong>@DateTimeFormat</strong>：指定入参的时间格式，入参的格式不正确会报错。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DateVo</span> </span>&#123;</span><br><span class="line">    <span class="meta">@DateTimeFormat(pattern=&quot;yyyy-MM-dd HH:mm:ss&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Date date;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>@JsonFormat</strong> : 对数据库中查询出的时间类型的数据进行格式化，jackson在序列化时间时是按照国际标准时间GMT进行格式化的，而在国内默认时区使用的是CST时区，两者相差8小时。该注解集成在spring-boot-start-web 下无需再引入依赖。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DateVo</span> </span>&#123;</span><br><span class="line">    <span class="meta">@DateTimeFormat(pattern=&quot;yyyy-MM-dd HH:mm:ss&quot;)</span></span><br><span class="line">    <span class="meta">@JsonFormat(pattern=&quot;yyyy-MM-dd HH:mm:ss&quot;, timezone=&quot;GMT+8&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Date date;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2022年03月07日 20:13</p>
+        <p>原始链接： <a class="post-url" href="/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" title="SpringBoot常用注解">http://localhost:4000/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</a></p>
+        <footer>
+            <a href="http://localhost:4000">
+                <img src="/images/logo.png" alt="ZhouFengBin">
+                ZhouFengBin
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://localhost:4000/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/&title=《SpringBoot常用注解》 — 奋书人的博客&pic=http://localhost:4000images/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://localhost:4000/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/&title=《SpringBoot常用注解》 — 奋书人的博客&source=个人笔记使用" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SpringBoot常用注解》 — 奋书人的博客&url=http://localhost:4000/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/&via=http://localhost:4000" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://localhost:4000/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://localhost:4000/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/MyBatis/" class="color3">MyBatis</a>
+    <a href="/tags/SpringBoot注解/" class="color3">SpringBoot注解</a>
       
   </li>
 
-        </div>
-      
+        </ul>
+        
+    </footer>
   </div>
 </article>
 
-  
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%B3%A8%E8%A7%A3-DateTimeFormat-%E5%92%8C-JsonFormat"><span class="post-toc-text">时间格式化注解 @DateTimeFormat 和 @JsonFormat</span></a></li></ol>
+        </nav>
+    </aside>
     
+
+<nav id="article-nav">
+  
+  
+    <a href="/2022/02/13/hydee%E5%B0%8F%E6%8A%80%E6%9C%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">hydee小技术</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/" class="archive-article-date">
-  <time datetime="2022-01-13T06:58:56.000Z" itemprop="datePublished">01-13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/13/Java%E9%9B%86%E5%90%88%E4%B9%8BList/"  target="_blank"  >Java集合之List</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/List/" class="color5">List</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  <time datetime="2022-01-12T08:13:23.000Z" itemprop="datePublished">01-12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/12/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/"  target="_blank"  >Docker的使用</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Docker/" class="color2">Docker</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  <time datetime="2022-01-12T07:04:53.000Z" itemprop="datePublished">01-12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/"  target="_blank"  >MySQL数据库常用SQL操作</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/MySQL/" class="color1">MySQL</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/01/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="archive-article-date">
-  <time datetime="2022-01-01T03:59:31.000Z" itemprop="datePublished">01-01</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"  target="_blank"  >多线程</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/多线程/" class="color4">多线程</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/01/01/Java%E5%B8%B8%E7%94%A8API/" class="archive-article-date">
-  <time datetime="2021-12-31T16:08:39.000Z" itemprop="datePublished">01-01</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/01/Java%E5%B8%B8%E7%94%A8API/"  target="_blank"  >Java常用API</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Java基础/" class="color2">Java基础</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-  
-    </div></section>
-  
-
 </section>
         
       </div>

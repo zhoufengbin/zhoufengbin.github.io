@@ -16,7 +16,7 @@
 <meta property="og:description" content="MyBatisMyBatis的模糊查询 方式一 1&#96;field_name&#96; like concat(&amp;#x27;%&amp;#x27;, #&amp;#123;value&amp;#125;, &amp;#x27;%&amp;#x27;)  栗子 1&#96;group_name&#96; like concat(&amp;#x27;%&amp;#x27;,#&amp;#123;groupName&amp;#125;, &amp;#x27;%&amp;#x27;) 方式二 1&#96;field_name&#96;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-14T01:11:06.000Z">
-<meta property="article:modified_time" content="2022-01-14T01:20:29.870Z">
+<meta property="article:modified_time" content="2022-03-07T12:13:11.816Z">
 <meta property="article:author" content="ZhouFengBin">
 <meta property="article:tag" content="MyBatis">
 <meta name="twitter:card" content="summary">
@@ -160,10 +160,46 @@
 <li>#{ }是预编译处理，MyBatis在处理#{ }时，它会将sql中的#{ }替换为？，然后调用PreparedStatement的set方法来赋值，传入字符串后，会在值两边加上单引号，使用占位符的方式提高效率，可以防止sql注入。</li>
 <li>${}:表示拼接sql串，将接收到参数的内容不加任何修饰拼接在sql中，可能引发sql注入。</li>
 </ul>
+<h4 id="MyBatis分页功能"><a href="#MyBatis分页功能" class="headerlink" title="MyBatis分页功能"></a>MyBatis分页功能</h4><ul>
+<li><p>创建分页对象，根据不同的构造方法创建合适的分页对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IPage&lt;T&gt; page = <span class="keyword">new</span> Page&lt;&gt;();</span><br></pre></td></tr></table></figure></li>
+<li><p>将page对象作为参数传给待查询方法中，方法返回一个page对象和传入的page对象是同一个。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IPage&lt;T&gt; <span class="title">queryGroupProgramInfo</span><span class="params">(IPage&lt;T&gt; page,<span class="meta">@Param(&quot;reqDTO&quot;)</span>xxxDTO reqDTO)</span></span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>page对象中常用的方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>page.getRecords()</td>
+<td>获取分页的数据。</td>
+</tr>
+<tr>
+<td>page.getTotal()</td>
+<td>数据的总条数</td>
+</tr>
+<tr>
+<td>page.getCurrent()</td>
+<td>当前页码</td>
+</tr>
+<tr>
+<td>page.getPages()</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>page.getSize()</td>
+<td>每页的条数</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2022年01月14日 09:20</p>
+        <p>最后更新： 2022年03月07日 20:13</p>
         <p>原始链接： <a class="post-url" href="/2022/01/14/MyBaits%E7%9A%84%E4%BD%BF%E7%94%A8/" title="MyBaits的使用">http://localhost:4000/2022/01/14/MyBaits%E7%9A%84%E4%BD%BF%E7%94%A8/</a></p>
         <footer>
             <a href="http://localhost:4000">
@@ -273,7 +309,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MyBatis"><span class="post-toc-text">MyBatis</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MyBatis%E7%9A%84%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="post-toc-text">MyBatis的模糊查询</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MyBatis"><span class="post-toc-text">MyBatis</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MyBatis%E7%9A%84%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="post-toc-text">MyBatis的模糊查询</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MyBatis%E5%88%86%E9%A1%B5%E5%8A%9F%E8%83%BD"><span class="post-toc-text">MyBatis分页功能</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -357,7 +393,7 @@
             <a class="category-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">Java基础</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hydee/" style="font-size: 10px;">hydee</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a>
+            <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">Java基础</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/SpringBoot%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">SpringBoot注解</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hydee/" style="font-size: 10px;">hydee</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -390,7 +426,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">Java基础</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hydee/" style="font-size: 10px;">hydee</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a>
+            <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">Java基础</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/SpringBoot%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">SpringBoot注解</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hydee/" style="font-size: 10px;">hydee</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a>
         </div>
     </div>
 </div>
