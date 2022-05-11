@@ -8,17 +8,17 @@
   
     <meta name="keywords" content="奋书人的博客" />
   
-  <meta name="description" content="一、基本SQL1. 查看MySQL数据库版本1SELECT VERSION();       2. 常见关键字 CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP  表示当插入数据的时候，该字段默认值为当前时间 ON UPDATE CURRENT_TIMESTAMP 表示每次更新这条数据的时候，该字段都会更新成当前时间    栗子 12345CREATE TAB">
+  <meta name="description" content="1. MySQL基础1.0MySQL的数据类型unsigned 无符号  数值类型    类型 大小 范围（有符号） 范围（无符号） 用途    tinyint 1byte (-128, 127) (0, 255) 小整数值   smallint 2byte (-32768, 32767) (0, 65535) 大整数值   mediumint 3btye (-8388608, 8388607)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL数据库常用SQL操作">
 <meta property="og:url" content="https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="奋书人的博客">
-<meta property="og:description" content="一、基本SQL1. 查看MySQL数据库版本1SELECT VERSION();       2. 常见关键字 CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP  表示当插入数据的时候，该字段默认值为当前时间 ON UPDATE CURRENT_TIMESTAMP 表示每次更新这条数据的时候，该字段都会更新成当前时间    栗子 12345CREATE TAB">
+<meta property="og:description" content="1. MySQL基础1.0MySQL的数据类型unsigned 无符号  数值类型    类型 大小 范围（有符号） 范围（无符号） 用途    tinyint 1byte (-128, 127) (0, 255) 小整数值   smallint 2byte (-32768, 32767) (0, 65535) 大整数值   mediumint 3btye (-8388608, 8388607)">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="d:/blog/source_posts/MySQL数据库常用SQL操作/image-20220119215508992.png">
 <meta property="og:image" content="https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/image-20220119215508992.png">
 <meta property="article:published_time" content="2022-01-12T07:04:53.000Z">
-<meta property="article:modified_time" content="2022-02-18T13:08:54.799Z">
+<meta property="article:modified_time" content="2022-05-11T08:36:42.182Z">
 <meta property="article:author" content="ZhouFengBin">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -146,7 +146,216 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h3 id="一、基本SQL"><a href="#一、基本SQL" class="headerlink" title="一、基本SQL"></a>一、基本SQL</h3><h5 id="1-查看MySQL数据库版本"><a href="#1-查看MySQL数据库版本" class="headerlink" title="1. 查看MySQL数据库版本"></a>1. 查看MySQL数据库版本</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> VERSION();</span><br></pre></td></tr></table></figure>
+            <h1 id="1-MySQL基础"><a href="#1-MySQL基础" class="headerlink" title="1. MySQL基础"></a>1. MySQL基础</h1><h2 id="1-0MySQL的数据类型"><a href="#1-0MySQL的数据类型" class="headerlink" title="1.0MySQL的数据类型"></a>1.0MySQL的数据类型</h2><p>unsigned 无符号</p>
+<ul>
+<li><p>数值类型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小</th>
+<th>范围（有符号）</th>
+<th>范围（无符号）</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tinyint</td>
+<td>1byte</td>
+<td>(-128, 127)</td>
+<td>(0, 255)</td>
+<td>小整数值</td>
+</tr>
+<tr>
+<td>smallint</td>
+<td>2byte</td>
+<td>(-32768, 32767)</td>
+<td>(0, 65535)</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>mediumint</td>
+<td>3btye</td>
+<td>(-8388608, 8388607)</td>
+<td>(0, 16777215)</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4byte</td>
+<td>(-2147483648, 2147483647)</td>
+<td>(0, 4294967295)</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>bigint</td>
+<td>8byte</td>
+<td></td>
+<td></td>
+<td>极大整数值</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4byte</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>double</td>
+<td>8byte</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>decimal</td>
+<td></td>
+<td></td>
+<td>依赖M和D的值</td>
+<td>小数值 如：decimal(5,2) 123.45</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>字符串类型</p>
+</li>
+<li><p>日期时间类型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小(byte)</th>
+<th>范围</th>
+<th>格式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>date</td>
+<td>3</td>
+<td>1000-01-01~9999-12-31</td>
+<td>YYYY-MM-DD</td>
+<td>日期值</td>
+</tr>
+<tr>
+<td>time</td>
+<td>3</td>
+<td>-838:59:59~838:59:59</td>
+<td>HH:MM:SS</td>
+<td>时间值</td>
+</tr>
+<tr>
+<td>year</td>
+<td>1</td>
+<td>1901~2155</td>
+<td>YYYY</td>
+<td>年份值</td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>8</td>
+<td>1000-01-01 00:00:00 ~9999-12-31 23:59:59</td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>4</td>
+<td>1970-01-01 00:00:01 UTC ~2038-01-19 03:14:07 UTC</td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>[^与时区关系. datetime是存储服务器当前的时区. 而timestamp类型,是将服务器当前时间转换为UTC(世界时间)来存储.即datetime与时区无关,存什么,返回什么. 而timestamp存储的时间,返回的时间会随着数据库的时区不同而发生改变.]: </p>
+</li>
+</ul>
+<h2 id="1-1-MySQL数据库基本操作-DDL"><a href="#1-1-MySQL数据库基本操作-DDL" class="headerlink" title="1.1 MySQL数据库基本操作-DDL"></a>1.1 MySQL数据库基本操作-DDL</h2><ul>
+<li><p>DDL(Data Definition Langauage),数据定义语言，该部分语言包含一些部分：</p>
+<ol>
+<li>对数据库的常用操作。</li>
+<li>对表结构的常用操作。</li>
+</ol>
+</li>
+<li><p>对数据库的常用操作</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看所有的数据库</td>
+<td>show databases;</td>
+</tr>
+<tr>
+<td>创建数据库</td>
+<td>create database [if not exists] <databasename> [charset=utf8]</td>
+</tr>
+<tr>
+<td>切换数据库</td>
+<td>user <databasename></td>
+</tr>
+<tr>
+<td>删除数据库</td>
+<td>drop database [if exists] <databasename></td>
+</tr>
+<tr>
+<td>修改数据库编码</td>
+<td>alter database <databasename> character set utf8</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>对表结构的常用操作</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看当前数据库中的所有表名称</td>
+<td>show tables;</td>
+</tr>
+<tr>
+<td>查看指定某个表的创建语句</td>
+<td>show create table <tablename>;</td>
+</tr>
+<tr>
+<td>查看表结构</td>
+<td>desc <tablename>;</td>
+</tr>
+<tr>
+<td>删除表</td>
+<td>drop table <tablename>;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>创建表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table [if not exists] &lt;tablename&gt;(</span><br><span class="line">	字段1 数据类型[(长度)] [约束条件] [定义字段字符集] [comment &#x27;字段说明&#x27;],</span><br><span class="line">	字段2 数据类型[(长度)] [约束条件] [定义字段字符集] [comment &#x27;字段说明&#x27;],</span><br><span class="line">	字段3 数据类型[(长度)] [约束条件] [定义字段字符集] [comment &#x27;字段说明&#x27;],</span><br><span class="line">	......</span><br><span class="line">)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=&#x27;表名&#x27;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `order_info` (</span><br><span class="line">  `id` <span class="type">bigint</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;编号&#x27;</span>,</span><br><span class="line">  `user_id` <span class="type">bigint</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `out_trade_no` <span class="type">varchar</span>(<span class="number">300</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;订单交易号&#x27;</span>,</span><br><span class="line">  `hoscode` <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;医院编号&#x27;</span>,</span><br><span class="line">  `hospital_name` <span class="type">varchar</span>(<span class="number">100</span>) <span class="type">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;医院名称&#x27;</span>,</span><br><span class="line">  `depcode` <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;科室编号&#x27;</span>,</span><br><span class="line">  `depname` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;科室名称&#x27;</span>,</span><br><span class="line">  `title` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;医生职称&#x27;</span>,</span><br><span class="line">  `hos_schedule_id` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;排班编号（医院自己的排班主键）&#x27;</span>,</span><br><span class="line">  `reserve_date` <span class="type">date</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;安排日期&#x27;</span>,</span><br><span class="line">  `reserve_time` tinyint <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;安排时间（0：上午 1：下午）&#x27;</span>,</span><br><span class="line">  `patient_id` <span class="type">bigint</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;就诊人id&#x27;</span>,</span><br><span class="line">  `patient_name` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;就诊人名称&#x27;</span>,</span><br><span class="line">  `patient_phone` <span class="type">varchar</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;就诊人手机&#x27;</span>,</span><br><span class="line">  `hos_record_id` <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;预约记录唯一标识（医院预约记录主键）&#x27;</span>,</span><br><span class="line">  `number` <span class="type">int</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;预约号序&#x27;</span>,</span><br><span class="line">  `fetch_time` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;建议取号时间&#x27;</span>,</span><br><span class="line">  `fetch_address` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;取号地点&#x27;</span>,</span><br><span class="line">  `amount` <span class="type">decimal</span>(<span class="number">10</span>,<span class="number">0</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;医事服务费&#x27;</span>,</span><br><span class="line">  `quit_time` datetime <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;退号时间&#x27;</span>,</span><br><span class="line">  `order_status` tinyint <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;订单状态&#x27;</span>,</span><br><span class="line">  `create_time` <span class="type">timestamp</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">  `update_time` <span class="type">timestamp</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> UPDATE <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">  `is_delete` tinyint <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`),</span><br><span class="line">  <span class="keyword">UNIQUE</span> KEY `uk_out_trade_no` (`out_trade_no`),</span><br><span class="line">  KEY `idx_user_id` (`user_id`),</span><br><span class="line">  KEY `idx_hoscode` (`hoscode`),</span><br><span class="line">  KEY `idx_hos_schedule_id` (`hos_schedule_id`),</span><br><span class="line">  KEY `idx_hos_record_id` (`hos_record_id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">13</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb3 COMMENT<span class="operator">=</span><span class="string">&#x27;订单表&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>修改表结构</p>
+<ul>
+<li><p>添加表字段,添加到指定字段的后面。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span>	<span class="operator">&lt;</span>tablename<span class="operator">&gt;</span> <span class="keyword">add</span> <span class="operator">&lt;</span>filedname<span class="operator">&gt;</span> 类型(长度) [约束] [after <span class="operator">&lt;</span>已存在的字段<span class="operator">&gt;</span>];</span><br></pre></td></tr></table></figure></li>
+<li><p>修改表字段名称</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="operator">&lt;</span>tablename<span class="operator">&gt;</span> rename <span class="keyword">column</span> <span class="operator">&lt;</span>filedname<span class="operator">&gt;</span> <span class="keyword">to</span> <span class="operator">&lt;</span>newfiledname<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>修改表字段属性</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="operator">&lt;</span>tablename<span class="operator">&gt;</span> modify <span class="operator">&lt;</span>filedname<span class="operator">&gt;</span> 类型(长度) [其他属性]</span><br></pre></td></tr></table></figure></li>
+<li><p>删除表字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="operator">&lt;</span>tablename<span class="operator">&gt;</span> <span class="keyword">drop</span> <span class="keyword">column</span> <span class="operator">&lt;</span>filedname<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 添加表字段</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> order_info <span class="keyword">add</span> `is_delete` tinyint <span class="keyword">default</span> <span class="number">1</span> after update_time;</span><br><span class="line"><span class="comment">-- 修改表字段名称</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> order_info rename <span class="keyword">column</span> `hosname` <span class="keyword">to</span>  `hospital_name`;</span><br><span class="line"><span class="comment">-- 修改表字段属性</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> order_info modify hospital_name <span class="type">varchar</span>(<span class="number">100</span>) <span class="type">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_general_ci <span class="keyword">default</span> <span class="keyword">null</span> comment <span class="string">&#x27;医院名称&#x27;</span>;</span><br><span class="line"><span class="comment">-- 删除表字段</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> order_info <span class="keyword">drop</span> <span class="keyword">column</span> is_deleted;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h3 id="一、基本SQL"><a href="#一、基本SQL" class="headerlink" title="一、基本SQL"></a>一、基本SQL</h3><h5 id="1-查看MySQL数据库版本"><a href="#1-查看MySQL数据库版本" class="headerlink" title="1. 查看MySQL数据库版本"></a>1. 查看MySQL数据库版本</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> VERSION();</span><br></pre></td></tr></table></figure>
 
 
 
@@ -287,7 +496,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2022年02月18日 21:08</p>
+        <p>最后更新： 2022年05月11日 16:36</p>
         <p>原始链接： <a class="post-url" href="/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/" title="MySQL数据库常用SQL操作">https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/</a></p>
         <footer>
             <a href="https://zhoufengbin.github.io">
@@ -397,7 +606,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%ACSQL"><span class="post-toc-text">一、基本SQL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-%E6%9F%A5%E7%9C%8BMySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%89%88%E6%9C%AC"><span class="post-toc-text">1. 查看MySQL数据库版本</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-%E5%B8%B8%E8%A7%81%E5%85%B3%E9%94%AE%E5%AD%97"><span class="post-toc-text">2. 常见关键字</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="post-toc-text">3. 常用函数</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-SQL-%E5%88%9B%E5%BB%BA-%E4%BF%AE%E6%94%B9%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95"><span class="post-toc-text">3. SQL 创建&#x2F;修改唯一索引</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81CTE-%E5%85%AC%E5%85%B1%E8%A1%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="post-toc-text">二、CTE(公共表表达式)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%AC%E7%94%A8%E8%A1%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%88%96CTE%EF%BC%9F"><span class="post-toc-text">1. 什么是公用表表达式或CTE？</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-CTE%E8%AF%AD%E6%B3%95"><span class="post-toc-text">2. CTE语法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81MySQL8-0-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="post-toc-text">三、MySQL8.0 窗口函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="post-toc-text">3.1 什么是窗口函数？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-2-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E8%AF%AD%E6%B3%95"><span class="post-toc-text">3.2 窗口函数语法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-3-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E5%88%86%E7%B1%BB"><span class="post-toc-text">3.3 窗口函数分类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-4-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E5%BA%94%E7%94%A8"><span class="post-toc-text">3.4 窗口函数应用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%99%84%E5%BD%951%EF%BC%9A-windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="post-toc-text">附录1： windows命令行操作数据库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%90%AF%E5%8A%A8%E5%81%9C%E6%AD%A2MySQL"><span class="post-toc-text">1. 命令行启动停止MySQL</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E8%BF%9B%E5%85%A5MySQL"><span class="post-toc-text">2.进入MySQL</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-MySQL%E5%9F%BA%E7%A1%80"><span class="post-toc-text">1. MySQL基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-0MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">1.0MySQL的数据类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-DDL"><span class="post-toc-text">1.1 MySQL数据库基本操作-DDL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%ACSQL"><span class="post-toc-text">一、基本SQL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-%E6%9F%A5%E7%9C%8BMySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%89%88%E6%9C%AC"><span class="post-toc-text">1. 查看MySQL数据库版本</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-%E5%B8%B8%E8%A7%81%E5%85%B3%E9%94%AE%E5%AD%97"><span class="post-toc-text">2. 常见关键字</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="post-toc-text">3. 常用函数</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-SQL-%E5%88%9B%E5%BB%BA-%E4%BF%AE%E6%94%B9%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95"><span class="post-toc-text">3. SQL 创建&#x2F;修改唯一索引</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81CTE-%E5%85%AC%E5%85%B1%E8%A1%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="post-toc-text">二、CTE(公共表表达式)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%AC%E7%94%A8%E8%A1%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%88%96CTE%EF%BC%9F"><span class="post-toc-text">1. 什么是公用表表达式或CTE？</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-CTE%E8%AF%AD%E6%B3%95"><span class="post-toc-text">2. CTE语法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81MySQL8-0-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="post-toc-text">三、MySQL8.0 窗口函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="post-toc-text">3.1 什么是窗口函数？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-2-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E8%AF%AD%E6%B3%95"><span class="post-toc-text">3.2 窗口函数语法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-3-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E5%88%86%E7%B1%BB"><span class="post-toc-text">3.3 窗口函数分类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-4-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E5%BA%94%E7%94%A8"><span class="post-toc-text">3.4 窗口函数应用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%99%84%E5%BD%951%EF%BC%9A-windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="post-toc-text">附录1： windows命令行操作数据库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%90%AF%E5%8A%A8%E5%81%9C%E6%AD%A2MySQL"><span class="post-toc-text">1. 命令行启动停止MySQL</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E8%BF%9B%E5%85%A5MySQL"><span class="post-toc-text">2.进入MySQL</span></a></li></ol></li></ol></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -481,7 +690,7 @@
             <a class="category-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">Java基础</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/SpringBoot%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">SpringBoot注解</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hydee/" style="font-size: 10px;">hydee</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a>
+            <a href="/tags/AOP/" style="font-size: 10px;">AOP</a> <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">Java基础</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/SpringBoot%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">SpringBoot注解</a> <a href="/tags/easyExcel/" style="font-size: 10px;">easyExcel</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hydee/" style="font-size: 10px;">hydee</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -514,7 +723,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">Java基础</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/SpringBoot%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">SpringBoot注解</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hydee/" style="font-size: 10px;">hydee</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a>
+            <a href="/tags/AOP/" style="font-size: 10px;">AOP</a> <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">Java基础</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/SpringBoot%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">SpringBoot注解</a> <a href="/tags/easyExcel/" style="font-size: 10px;">easyExcel</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hydee/" style="font-size: 10px;">hydee</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a>
         </div>
     </div>
 </div>
