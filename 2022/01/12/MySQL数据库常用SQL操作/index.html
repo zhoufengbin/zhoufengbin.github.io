@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MySQL数据库常用SQL操作 | 奋书人的博客</title>
+  <title>MySQL数据库基础 | 奋书人的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="奋书人的博客" />
   
   <meta name="description" content="1. MySQL基础1.0MySQL的数据类型unsigned 无符号  数值类型    类型 大小 范围（有符号） 范围（无符号） 用途    tinyint 1byte (-128, 127) (0, 255) 小整数值   smallint 2byte (-32768, 32767) (0, 65535) 大整数值   mediumint 3btye (-8388608, 8388607)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL数据库常用SQL操作">
+<meta property="og:title" content="MySQL数据库基础">
 <meta property="og:url" content="https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="奋书人的博客">
 <meta property="og:description" content="1. MySQL基础1.0MySQL的数据类型unsigned 无符号  数值类型    类型 大小 范围（有符号） 范围（无符号） 用途    tinyint 1byte (-128, 127) (0, 255) 小整数值   smallint 2byte (-32768, 32767) (0, 65535) 大整数值   mediumint 3btye (-8388608, 8388607)">
@@ -18,7 +18,7 @@
 <meta property="og:image" content="d:/blog/source_posts/MySQL数据库常用SQL操作/image-20220119215508992.png">
 <meta property="og:image" content="https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/image-20220119215508992.png">
 <meta property="article:published_time" content="2022-01-12T07:04:53.000Z">
-<meta property="article:modified_time" content="2022-05-11T08:36:42.182Z">
+<meta property="article:modified_time" content="2022-05-11T09:08:47.086Z">
 <meta property="article:author" content="ZhouFengBin">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -124,7 +124,7 @@
         
   
     <h1 class="post-title" itemprop="name">
-      MySQL数据库常用SQL操作
+      MySQL数据库基础
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -266,7 +266,7 @@
 <td></td>
 </tr>
 </tbody></table>
-<p>[^与时区关系. datetime是存储服务器当前的时区. 而timestamp类型,是将服务器当前时间转换为UTC(世界时间)来存储.即datetime与时区无关,存什么,返回什么. 而timestamp存储的时间,返回的时间会随着数据库的时区不同而发生改变.]: </p>
+<p><strong>注意：</strong>与时区关系. datetime是存储服务器当前的时区. 而timestamp类型,是将服务器当前时间转换为UTC(世界时间)来存储.即datetime与时区无关,存什么,返回什么. 而timestamp存储的时间,返回的时间会随着数据库的时区不同而发生改变.</p>
 </li>
 </ul>
 <h2 id="1-1-MySQL数据库基本操作-DDL"><a href="#1-1-MySQL数据库基本操作-DDL" class="headerlink" title="1.1 MySQL数据库基本操作-DDL"></a>1.1 MySQL数据库基本操作-DDL</h2><ul>
@@ -496,8 +496,8 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2022年05月11日 16:36</p>
-        <p>原始链接： <a class="post-url" href="/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/" title="MySQL数据库常用SQL操作">https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/</a></p>
+        <p>最后更新： 2022年05月11日 17:08</p>
+        <p>原始链接： <a class="post-url" href="/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/" title="MySQL数据库基础">https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/</a></p>
         <footer>
             <a href="https://zhoufengbin.github.io">
                 <img src="/images/logo.png" alt="ZhouFengBin">
@@ -546,7 +546,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/&title=《MySQL数据库常用SQL操作》 — 奋书人的博客&pic=images/MySQL.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/&title=《MySQL数据库基础》 — 奋书人的博客&pic=images/MySQL.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -556,7 +556,7 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/&title=《MySQL数据库常用SQL操作》 — 奋书人的博客&source=个人笔记使用" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/&title=《MySQL数据库基础》 — 奋书人的博客&source=个人笔记使用" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
@@ -566,7 +566,7 @@
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MySQL数据库常用SQL操作》 — 奋书人的博客&url=https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/&via=https://zhoufengbin.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MySQL数据库基础》 — 奋书人的博客&url=https://zhoufengbin.github.io/2022/01/12/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8SQL%E6%93%8D%E4%BD%9C/&via=https://zhoufengbin.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
