@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>SpringBoot常用注解 | 奋书人的博客</title>
+  <title>Redis数据库 | 奋书人的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="奋书人的博客" />
   
-  <meta name="description" content="时间格式化注解 @DateTimeFormat 和 @JsonFormat @DateTimeFormat：指定入参的时间格式，入参的格式不正确会报错。 12345@Datapublic class DateVo &amp;#123;    @DateTimeFormat(pattern&#x3D;&quot;yyyy-MM-dd HH:mm:ss&quot;)    private Date date;&amp;#125">
+  <meta name="description" content="1. Redis简介2. Redis安装3. Redis常用命令 select ： 选择数据库。如：select 0; select 15。 set :  设置键值。如：set key1 value1; set key2 value2。 keys * ： 查看当前库中所有的键值。 get key : 根据键获取对应的值。如：get key1; exists key ： 判断当前键是否存在，0 不存">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot常用注解">
-<meta property="og:url" content="https://zhoufengbin.github.io/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/index.html">
+<meta property="og:title" content="Redis数据库">
+<meta property="og:url" content="https://zhoufengbin.github.io/2022/06/01/Redis%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
 <meta property="og:site_name" content="奋书人的博客">
-<meta property="og:description" content="时间格式化注解 @DateTimeFormat 和 @JsonFormat @DateTimeFormat：指定入参的时间格式，入参的格式不正确会报错。 12345@Datapublic class DateVo &amp;#123;    @DateTimeFormat(pattern&#x3D;&quot;yyyy-MM-dd HH:mm:ss&quot;)    private Date date;&amp;#125">
+<meta property="og:description" content="1. Redis简介2. Redis安装3. Redis常用命令 select ： 选择数据库。如：select 0; select 15。 set :  设置键值。如：set key1 value1; set key2 value2。 keys * ： 查看当前库中所有的键值。 get key : 根据键获取对应的值。如：get key1; exists key ： 判断当前键是否存在，0 不存">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-07T08:09:17.000Z">
-<meta property="article:modified_time" content="2022-03-07T12:13:09.087Z">
+<meta property="article:published_time" content="2022-06-01T10:50:48.000Z">
+<meta property="article:modified_time" content="2022-06-11T00:55:23.654Z">
 <meta property="article:author" content="ZhouFengBin">
-<meta property="article:tag" content="SpringBoot注解">
+<meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
   
   
@@ -114,20 +114,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-SpringBoot常用注解" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-Redis数据库" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      SpringBoot常用注解
+      Redis数据库
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2022-03-07
+          <i class="fa fa-calendar"></i>  2022-06-01
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -143,17 +143,62 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h4 id="时间格式化注解-DateTimeFormat-和-JsonFormat"><a href="#时间格式化注解-DateTimeFormat-和-JsonFormat" class="headerlink" title="时间格式化注解 @DateTimeFormat 和 @JsonFormat"></a>时间格式化注解 @DateTimeFormat 和 @JsonFormat</h4><ul>
-<li><p><strong>@DateTimeFormat</strong>：指定入参的时间格式，入参的格式不正确会报错。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DateVo</span> </span>&#123;</span><br><span class="line">    <span class="meta">@DateTimeFormat(pattern=&quot;yyyy-MM-dd HH:mm:ss&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Date date;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>@JsonFormat</strong> : 对数据库中查询出的时间类型的数据进行格式化，jackson在序列化时间时是按照国际标准时间GMT进行格式化的，而在国内默认时区使用的是CST时区，两者相差8小时。该注解集成在spring-boot-start-web 下无需再引入依赖。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DateVo</span> </span>&#123;</span><br><span class="line">    <span class="meta">@DateTimeFormat(pattern=&quot;yyyy-MM-dd HH:mm:ss&quot;)</span></span><br><span class="line">    <span class="meta">@JsonFormat(pattern=&quot;yyyy-MM-dd HH:mm:ss&quot;, timezone=&quot;GMT+8&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Date date;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+            <h2 id="1-Redis简介"><a href="#1-Redis简介" class="headerlink" title="1. Redis简介"></a>1. Redis简介</h2><h2 id="2-Redis安装"><a href="#2-Redis安装" class="headerlink" title="2. Redis安装"></a>2. Redis安装</h2><h2 id="3-Redis常用命令"><a href="#3-Redis常用命令" class="headerlink" title="3. Redis常用命令"></a>3. Redis常用命令</h2><ul>
+<li><strong>select ：</strong> 选择数据库。如：select 0; select 15。</li>
+<li><strong>set :</strong>  设置键值。如：set key1 value1; set key2 value2。</li>
+<li><strong>keys * ：</strong> 查看当前库中所有的键值。</li>
+<li><strong>get key :</strong> 根据键获取对应的值。如：get key1;</li>
+<li><strong>exists key ：</strong> 判断当前键是否存在，0 不存在；1 存在。</li>
+<li><strong>del key :</strong>  删除当前库中的键。</li>
+<li>**type key : ** 查看key类型。</li>
+<li><strong>expire key <time> :</strong>  设置键的过期时间。默认单位为秒。如： expire key1 10;</li>
+<li><strong>ttl key :</strong> 查看键剩余的过期时间。-1 表示永不过期；-2表示已过期。</li>
+<li>**dbsize : ** 查看当前库中的键的数量。</li>
+<li>**flushdb : ** 清空当前库中所有的键。</li>
+<li>**flushall : ** 清空所有的库中的数据。</li>
 </ul>
-
+<h2 id="4-Redis中常用的数据类型"><a href="#4-Redis中常用的数据类型" class="headerlink" title="4. Redis中常用的数据类型"></a>4. Redis中常用的数据类型</h2><ul>
+<li>字符串(String)</li>
+<li>列表(List)</li>
+<li>集合(Set)</li>
+<li>哈希(Hash)</li>
+<li>有序集合(ZSet)</li>
+</ul>
+<hr>
+<h3 id="4-1-String-字符串"><a href="#4-1-String-字符串" class="headerlink" title="4.1 String 字符串"></a>4.1 String 字符串</h3><h4 id="4-1-1-简介"><a href="#4-1-1-简介" class="headerlink" title="4.1.1 简介"></a>4.1.1 简介</h4><ul>
+<li>String类型是Redis最基本的类型，存储的类型是二进制安全的，可以存储任意类型的数据，value的最大存储512M。</li>
+</ul>
+<h4 id="4-1-2-数据结构类型？"><a href="#4-1-2-数据结构类型？" class="headerlink" title="4.1.2 数据结构类型？"></a>4.1.2 数据结构类型？</h4><hr>
+<h3 id="4-2-List-列表"><a href="#4-2-List-列表" class="headerlink" title="4.2 List 列表"></a>4.2 List 列表</h3><h4 id="4-2-1-简介"><a href="#4-2-1-简介" class="headerlink" title="4.2.1 简介"></a>4.2.1 简介</h4><ul>
+<li>List 列表是最简单的字符串列表，插入是有序的，头部和尾部都可以添加元素。</li>
+</ul>
+<h4 id="4-2-1-数据结构？"><a href="#4-2-1-数据结构？" class="headerlink" title="4.2.1 数据结构？"></a>4.2.1 数据结构？</h4><ul>
+<li>底层实现为双向链表，对两端的可操作性高，通过索引操作中间元素性能较差。</li>
+</ul>
+<hr>
+<h3 id="4-3-Set-集合"><a href="#4-3-Set-集合" class="headerlink" title="4.3 Set 集合"></a>4.3 Set 集合</h3><h4 id="4-3-1-简介"><a href="#4-3-1-简介" class="headerlink" title="4.3.1 简介"></a>4.3.1 简介</h4><ul>
+<li>Set集合也是提供一个列表功能，无需的，可以自动去重，不允许存储重复的数据，在添加，删除，查找效率高，时间复杂度O(1)。</li>
+</ul>
+<hr>
+<h3 id="4-3-Hash-哈希"><a href="#4-3-Hash-哈希" class="headerlink" title="4.3 Hash 哈希"></a>4.3 Hash 哈希</h3><h4 id="4-3-1-简介-1"><a href="#4-3-1-简介-1" class="headerlink" title="4.3.1 简介"></a>4.3.1 简介</h4><h4 id="4-3-2-数据结构"><a href="#4-3-2-数据结构" class="headerlink" title="4.3.2 数据结构"></a>4.3.2 数据结构</h4><ul>
+<li>Hash类型的数据结构分为两种：zipList(压缩列表)，hashTable(哈希表)。当filed-value长度较短且数量较少时，使用zipList,否则使用hashTable。</li>
+</ul>
+<hr>
+<h3 id="4-4-ZSet有序集合"><a href="#4-4-ZSet有序集合" class="headerlink" title="4.4 ZSet有序集合"></a>4.4 ZSet有序集合</h3><h4 id="4-4-1-简介"><a href="#4-4-1-简介" class="headerlink" title="4.4.1 简介"></a>4.4.1 简介</h4><hr>
+<h3 id="Redis的持久化"><a href="#Redis的持久化" class="headerlink" title="Redis的持久化"></a>Redis的持久化</h3><ul>
+<li>Redis的持久化方式分为两种分别为：RDB（Redis DataBase）和 AOF（Append Only File）</li>
+</ul>
+<h4 id="RDB方式"><a href="#RDB方式" class="headerlink" title="RDB方式"></a>RDB方式</h4><ul>
+<li>在指定的时间间隔内将内存中的数据集快照写入硬盘保存。（每隔一段时间就保存数据）</li>
+</ul>
+<h5 id="执行方式"><a href="#执行方式" class="headerlink" title="执行方式"></a>执行方式</h5><ul>
+<li>Redis主线程会fork一个子线程单独进行持久化工作，将数据写入到一个临时文件中（dump.rdb），待持久化操作完成后，临时文件将覆盖旧的持久化文件。</li>
+</ul>
+<h4 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h4>
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2022年03月07日 20:13</p>
-        <p>原始链接： <a class="post-url" href="/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" title="SpringBoot常用注解">https://zhoufengbin.github.io/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</a></p>
+        <p>最后更新： 2022年06月11日 08:55</p>
+        <p>原始链接： <a class="post-url" href="/2022/06/01/Redis%E6%95%B0%E6%8D%AE%E5%BA%93/" title="Redis数据库">https://zhoufengbin.github.io/2022/06/01/Redis%E6%95%B0%E6%8D%AE%E5%BA%93/</a></p>
         <footer>
             <a href="https://zhoufengbin.github.io">
                 <img src="/images/logo.png" alt="ZhouFengBin">
@@ -202,7 +247,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufengbin.github.io/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/&title=《SpringBoot常用注解》 — 奋书人的博客&pic=https://zhoufengbin.github.ioimages/logo.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufengbin.github.io/2022/06/01/Redis%E6%95%B0%E6%8D%AE%E5%BA%93/&title=《Redis数据库》 — 奋书人的博客&pic=https://zhoufengbin.github.ioimages/logo.png" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -212,22 +257,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufengbin.github.io/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/&title=《SpringBoot常用注解》 — 奋书人的博客&source=个人笔记使用" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufengbin.github.io/2022/06/01/Redis%E6%95%B0%E6%8D%AE%E5%BA%93/&title=《Redis数据库》 — 奋书人的博客&source=个人笔记使用" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufengbin.github.io/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufengbin.github.io/2022/06/01/Redis%E6%95%B0%E6%8D%AE%E5%BA%93/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SpringBoot常用注解》 — 奋书人的博客&url=https://zhoufengbin.github.io/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/&via=https://zhoufengbin.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Redis数据库》 — 奋书人的博客&url=https://zhoufengbin.github.io/2022/06/01/Redis%E6%95%B0%E6%8D%AE%E5%BA%93/&via=https://zhoufengbin.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufengbin.github.io/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufengbin.github.io/2022/06/01/Redis%E6%95%B0%E6%8D%AE%E5%BA%93/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -237,7 +282,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhoufengbin.github.io/2022/03/07/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhoufengbin.github.io/2022/06/01/Redis%E6%95%B0%E6%8D%AE%E5%BA%93/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -249,7 +294,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/SpringBoot注解/" class="color3">SpringBoot注解</a>
+    <a href="/tags/redis/" class="color1">redis</a>
       
   </li>
 
@@ -262,26 +307,26 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%B3%A8%E8%A7%A3-DateTimeFormat-%E5%92%8C-JsonFormat"><span class="post-toc-text">时间格式化注解 @DateTimeFormat 和 @JsonFormat</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-Redis%E7%AE%80%E4%BB%8B"><span class="post-toc-text">1. Redis简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Redis%E5%AE%89%E8%A3%85"><span class="post-toc-text">2. Redis安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="post-toc-text">3. Redis常用命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-Redis%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">4. Redis中常用的数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-String-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="post-toc-text">4.1 String 字符串</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-1-1-%E7%AE%80%E4%BB%8B"><span class="post-toc-text">4.1.1 简介</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-1-2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="post-toc-text">4.1.2 数据结构类型？</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-List-%E5%88%97%E8%A1%A8"><span class="post-toc-text">4.2 List 列表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-2-1-%E7%AE%80%E4%BB%8B"><span class="post-toc-text">4.2.1 简介</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-2-1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9F"><span class="post-toc-text">4.2.1 数据结构？</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3-Set-%E9%9B%86%E5%90%88"><span class="post-toc-text">4.3 Set 集合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-3-1-%E7%AE%80%E4%BB%8B"><span class="post-toc-text">4.3.1 简介</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3-Hash-%E5%93%88%E5%B8%8C"><span class="post-toc-text">4.3 Hash 哈希</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-3-1-%E7%AE%80%E4%BB%8B-1"><span class="post-toc-text">4.3.1 简介</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-3-2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="post-toc-text">4.3.2 数据结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-4-ZSet%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88"><span class="post-toc-text">4.4 ZSet有序集合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-4-1-%E7%AE%80%E4%BB%8B"><span class="post-toc-text">4.4.1 简介</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96"><span class="post-toc-text">Redis的持久化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RDB%E6%96%B9%E5%BC%8F"><span class="post-toc-text">RDB方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F"><span class="post-toc-text">执行方式</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#AOF"><span class="post-toc-text">AOF</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2022/04/28/AOP%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%88%87%E6%8D%A2-md/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/06/25/%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B9%8BHadoop/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          AOP实现多数据源切换.md
+          大数据之Hadoop
         
       </span>
     </a>
   
   
-    <a href="/2022/02/13/hydee%E5%B0%8F%E6%8A%80%E6%9C%AF/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">hydee小技术</span>
+    <a href="/2022/05/13/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">排序算法</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   

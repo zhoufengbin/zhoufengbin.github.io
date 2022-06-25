@@ -4,6 +4,57 @@
   
     
     <entry>
+      <title>大数据之Hadoop</title>
+      <link href="/2022/06/25/%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B9%8BHadoop/"/>
+      <url>/2022/06/25/%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B9%8BHadoop/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-Hadoop介绍"><a href="#1-Hadoop介绍" class="headerlink" title="1. Hadoop介绍"></a>1. Hadoop介绍</h3><ul><li><p>狭义上Hadoop指的是Apache软件基金会的一款开源软件。</p></li><li><p>用java语言实现，开源的。允许用户使用简单的编程模型实现跨机器集群对海量数据进行分布式计算处理。</p></li><li><p>Hadoop核心组件</p><ul><li><p>Hadoop HDFS （分布式文件存储系统）︰解决海量数据存储。</p></li><li><p>Hadoop YARN（集群资源管理和任务调度框架）︰解决资源任务调度。</p></li><li><p>Hadoop MapReduce (分布式计算框架）︰解决海量数据计算。是一个计算框架，没有集群的说法。</p></li></ul></li><li><p>官网</p><ul><li><a href="">http: // hadoop. apache.org/</a></li></ul></li></ul><hr><h3 id="2-Hadoop特点"><a href="#2-Hadoop特点" class="headerlink" title="2. Hadoop特点"></a>2. Hadoop特点</h3><ol><li><p><strong>扩容能力（scalability）</strong></p><p>Hadoop是在可用的计算机集群间分配数据并完成计算任务的，这些集群可方便灵活的方式扩展到数以千计的节点。</p></li><li><p><strong>成本低(Economical)</strong></p><p>Hadoop集群允许通过部署普通廉价的机器组成集群来处理大数据，以至于成本很低。看重的是集群整体能力。</p></li><li><p><strong>效率高(efficiency)</strong></p><p>通过并发数据，Hadoop可以在节点之间动态并行的移动数据，使得速度非常快。</p></li><li><p><strong>可靠性(reliability)</strong></p><p>能自动维护数据的多份复制，并且在任务失败后能自动地重新部署( redeploy )计算任务。所以Hadoop的按位存储和处理数据的能力值得人们信赖。</p></li></ol><h3 id="3-Hadoop集群整体概述"><a href="#3-Hadoop集群整体概述" class="headerlink" title="3. Hadoop集群整体概述"></a>3. Hadoop集群整体概述</h3><ul><li><p>Hadoop集群包括两个集群：<strong>HDFS集群、YARN集群</strong>。</p><ul><li><strong>HDFS集群</strong>：主要负责分布式存储。有三个角色，分别为：主角色(NameNode，NN)，从角色(DataNode, DN)，主角色辅助角色(SecondaryNameNode, SNN）。</li><li><strong>YARN集群</strong>：主要负责资源管理、调度。有两个角色，分别为: 主角色(ResourceManager，RM)，从角色(NodeManager, NM)。</li></ul></li><li><p>两个集群逻辑上是分离的，物理上在一起的。</p></li><li><p>两个集群都是标准的主从架构集群。</p></li></ul><p><img src="D:\blog\source_posts\大数据之Hadoop\image-20220625162537568.png" alt="image-20220625162537568"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 大数据 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redis数据库</title>
+      <link href="/2022/06/01/Redis%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <url>/2022/06/01/Redis%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-Redis简介"><a href="#1-Redis简介" class="headerlink" title="1. Redis简介"></a>1. Redis简介</h2><h2 id="2-Redis安装"><a href="#2-Redis安装" class="headerlink" title="2. Redis安装"></a>2. Redis安装</h2><h2 id="3-Redis常用命令"><a href="#3-Redis常用命令" class="headerlink" title="3. Redis常用命令"></a>3. Redis常用命令</h2><ul><li><strong>select ：</strong> 选择数据库。如：select 0; select 15。</li><li><strong>set :</strong>  设置键值。如：set key1 value1; set key2 value2。</li><li><strong>keys * ：</strong> 查看当前库中所有的键值。</li><li><strong>get key :</strong> 根据键获取对应的值。如：get key1;</li><li><strong>exists key ：</strong> 判断当前键是否存在，0 不存在；1 存在。</li><li><strong>del key :</strong>  删除当前库中的键。</li><li>**type key : ** 查看key类型。</li><li><strong>expire key <time> :</strong>  设置键的过期时间。默认单位为秒。如： expire key1 10;</li><li><strong>ttl key :</strong> 查看键剩余的过期时间。-1 表示永不过期；-2表示已过期。</li><li>**dbsize : ** 查看当前库中的键的数量。</li><li>**flushdb : ** 清空当前库中所有的键。</li><li>**flushall : ** 清空所有的库中的数据。</li></ul><h2 id="4-Redis中常用的数据类型"><a href="#4-Redis中常用的数据类型" class="headerlink" title="4. Redis中常用的数据类型"></a>4. Redis中常用的数据类型</h2><ul><li>字符串(String)</li><li>列表(List)</li><li>集合(Set)</li><li>哈希(Hash)</li><li>有序集合(ZSet)</li></ul><hr><h3 id="4-1-String-字符串"><a href="#4-1-String-字符串" class="headerlink" title="4.1 String 字符串"></a>4.1 String 字符串</h3><h4 id="4-1-1-简介"><a href="#4-1-1-简介" class="headerlink" title="4.1.1 简介"></a>4.1.1 简介</h4><ul><li>String类型是Redis最基本的类型，存储的类型是二进制安全的，可以存储任意类型的数据，value的最大存储512M。</li></ul><h4 id="4-1-2-数据结构类型？"><a href="#4-1-2-数据结构类型？" class="headerlink" title="4.1.2 数据结构类型？"></a>4.1.2 数据结构类型？</h4><hr><h3 id="4-2-List-列表"><a href="#4-2-List-列表" class="headerlink" title="4.2 List 列表"></a>4.2 List 列表</h3><h4 id="4-2-1-简介"><a href="#4-2-1-简介" class="headerlink" title="4.2.1 简介"></a>4.2.1 简介</h4><ul><li>List 列表是最简单的字符串列表，插入是有序的，头部和尾部都可以添加元素。</li></ul><h4 id="4-2-1-数据结构？"><a href="#4-2-1-数据结构？" class="headerlink" title="4.2.1 数据结构？"></a>4.2.1 数据结构？</h4><ul><li>底层实现为双向链表，对两端的可操作性高，通过索引操作中间元素性能较差。</li></ul><hr><h3 id="4-3-Set-集合"><a href="#4-3-Set-集合" class="headerlink" title="4.3 Set 集合"></a>4.3 Set 集合</h3><h4 id="4-3-1-简介"><a href="#4-3-1-简介" class="headerlink" title="4.3.1 简介"></a>4.3.1 简介</h4><ul><li>Set集合也是提供一个列表功能，无需的，可以自动去重，不允许存储重复的数据，在添加，删除，查找效率高，时间复杂度O(1)。</li></ul><hr><h3 id="4-3-Hash-哈希"><a href="#4-3-Hash-哈希" class="headerlink" title="4.3 Hash 哈希"></a>4.3 Hash 哈希</h3><h4 id="4-3-1-简介-1"><a href="#4-3-1-简介-1" class="headerlink" title="4.3.1 简介"></a>4.3.1 简介</h4><h4 id="4-3-2-数据结构"><a href="#4-3-2-数据结构" class="headerlink" title="4.3.2 数据结构"></a>4.3.2 数据结构</h4><ul><li>Hash类型的数据结构分为两种：zipList(压缩列表)，hashTable(哈希表)。当filed-value长度较短且数量较少时，使用zipList,否则使用hashTable。</li></ul><hr><h3 id="4-4-ZSet有序集合"><a href="#4-4-ZSet有序集合" class="headerlink" title="4.4 ZSet有序集合"></a>4.4 ZSet有序集合</h3><h4 id="4-4-1-简介"><a href="#4-4-1-简介" class="headerlink" title="4.4.1 简介"></a>4.4.1 简介</h4><hr><h3 id="Redis的持久化"><a href="#Redis的持久化" class="headerlink" title="Redis的持久化"></a>Redis的持久化</h3><ul><li>Redis的持久化方式分为两种分别为：RDB（Redis DataBase）和 AOF（Append Only File）</li></ul><h4 id="RDB方式"><a href="#RDB方式" class="headerlink" title="RDB方式"></a>RDB方式</h4><ul><li>在指定的时间间隔内将内存中的数据集快照写入硬盘保存。（每隔一段时间就保存数据）</li></ul><h5 id="执行方式"><a href="#执行方式" class="headerlink" title="执行方式"></a>执行方式</h5><ul><li>Redis主线程会fork一个子线程单独进行持久化工作，将数据写入到一个临时文件中（dump.rdb），待持久化操作完成后，临时文件将覆盖旧的持久化文件。</li></ul><h4 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h4>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>排序算法</title>
+      <link href="/2022/05/13/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+      <url>/2022/05/13/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>easyExcel导出</title>
       <link href="/2022/04/28/easyExcel%E5%AF%BC%E5%87%BA/"/>
       <url>/2022/04/28/easyExcel%E5%AF%BC%E5%87%BA/</url>
